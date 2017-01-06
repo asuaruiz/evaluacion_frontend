@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Examen Herramientas Productividad</title>
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="dist/css/style.min.css">
+	<!--REQUIRED STYLE SHEETS-->
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<img class="navbar-brand" alt="Brand" src="dist/img/logo-gris.jpg">
+			</div>
+			<div class="navbar-right">
+				<button type="button" class="btn btn-default pull-right" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+			</div>
+		</div>
+	</nav><!--END NAV SECTION -->
+	<section>
+		<div id="map" style="width: 100%; height: 100vh;"></div><!--Mapa-->
+		<div id="formContent"><!--Select Ciudades-->
+			<div action="#">
+				<label for="origen"><H3>ORIGEN</H3></label>
+				<select name="origen" class="form-control">
+					<option value="santiago, Cl">Santiago</option>
+					<option value="Antofagasta">Antofagasta</option>
+					<option value="Arica">Arica</option>
+					<option value="Calama">Calama</option>
+					<option value="Concepción">Concepción</option>
+					<option value="Coyhaique">Coyhaique</option>
+					<option value="Iquique">Iquique</option>
+					<option value="La Serena">La Serena</option>
+					<option value="Punta Arenas">Punta Arenas</option>
+					<option value="Puerto Montt">Puerto Montt</option>
+					<option value="Rancagua">Rancagua</option>
+					<option value="Talca">Talca</option>
+					<option value="Temuco">Temuco</option>
+					<option value="Valdivia">Valdivia</option>
+					<option value="Valparaiso">Valparaiso</option>
+				</select>
+				<label for="destino"><H3>DESTINO</H3></label>
+				<select name="destino" class="form-control">
+					<option value="santiago, Cl">Santiago</option>
+					<option value="Antofagasta">Antofagasta</option>
+					<option value="Arica">Arica</option>
+					<option value="Calama">Calama</option>
+					<option value="Concepción">Concepción</option>
+					<option value="Coyhaique">Coyhaique</option>
+					<option value="Iquique">Iquique</option>
+					<option value="La Serena">La Serena</option>
+					<option value="Punta Arenas">Punta Arenas</option>
+					<option value="Puerto Montt">Puerto Montt</option>
+					<option value="Rancagua">Rancagua</option>
+					<option value="Talca">Talca</option>
+					<option value="Temuco">Temuco</option>
+					<option value="Valdivia">Valdivia</option>
+					<option value="Valparaiso">Valparaiso</option>
+				</select>
+				<button id="btn-ruta" class="btn pull-right">Enviar</button>
+			</div>
+		</div>
+		<div id="transport" class="hidden formContent">
+			<div class="radio">
+				<label>
+					<input class="check" type="radio" name="optionsRadios" id="moto" value="option1"> Motocicleta
+					<img class="img-size" src="dist/img/moto.jpg" alt="">
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input class="check" type="radio" name="optionsRadios" id="auto" value="option2"> Automóvil
+					<img class="img-size" src="dist/img/auto.jpg" alt="">
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input class="check" type="radio" name="optionsRadios" id="minivan" value="option3"> Minivan
+					<img class="img-size" src="dist/img/van.jpg" alt="">
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input class="check" type="radio" name="optionsRadios" id="camion" value="option4"> Camión
+					<img class="img-size" src="dist/img/camion.jpg" alt="">
+				</label>
+			</div>
+			<button id="btn-transport" class="btn pull-right" disabled="disabled">Enviar</button>
+		</div>
+	</section>
+
+
+
+	<script>
+		function initMap() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+        	center: {lat: -34.397, lng: 150.644},
+        	scrollwheel: false,
+        	zoom: 8
+        });
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_muTxnRqUeuKyWCFqtIu6r4KhpKCLJrc&callback=initMap"
+async defer></script>
+
+<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="dist/js/script.min.js"></script>
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
+
+</body>
+</html>

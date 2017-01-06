@@ -1,0 +1,32 @@
+﻿@import '_variables.scss';
+@import '_reset.scss';
+
+
+
+
+#formContent {
+    position: absolute;
+    top: 20%;
+    width: 300px;
+    margin: 0 5%;
+    padding: 1%;
+    background-color: $bg-principal;
+}
+.formContent{
+	position: absolute;
+	top: 60%;
+	width: 300px;
+	margin:0 5%;
+	padding: 1%;
+	background-color: $bg-principal;
+}
+.img-size{
+	max-height: $small-img;
+};
+#transport > div > div:nth-child(1) > div > label{
+	padding-left: $pad-reset;
+}
+.btn{
+	width: $width-max;
+	background-color: $bg-yellow;
+}
