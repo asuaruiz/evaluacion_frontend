@@ -8,6 +8,14 @@ $(document).ready(function(){
 		} else {
 			$('#btn-transport').attr('disabled', 'disabled');
 		}
-	});	
+	});
+	$("#cont-select").change(function () {
+        if ($(this).val() == "0") {
+            $("#btn-ruta").attr("disabled" , "disable")
+        } else {
+            // enable button
+            $("#btn-ruta").removeAttr("disabled")
+        }
+    });	
 });
 
