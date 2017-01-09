@@ -60,36 +60,43 @@
 					<option value="Valdivia">Valdivia</option>
 					<option value="Valparaiso">Valparaiso</option>
 				</select>
+				</br>
 				<button id="btn-ruta" class="btn pull-right" disabled="disabled">Enviar</button>
+				<button id="btn-ruta-json" class="btn pull-right" onclick="rutaKms()">Calcular</button>
 			</div>
 		</div>
 		<div id="transport" class="hidden formContent">
 			<div class="radio">
 				<label>
-					<input class="check" type="radio" name="optionsRadios" id="moto" value="option1"> Motocicleta
+					<input class="check getconsumo" type="radio" name="optionsRadios" id="moto" value="option1"> Motocicleta
 					<img class="img-size" src="dist/img/moto.jpg" alt="">
+					<b><span id="valorop1">Consumo</span></b>
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input class="check" type="radio" name="optionsRadios" id="auto" value="option2"> Automóvil
+					<input class="check getconsumo" type="radio" name="optionsRadios" id="auto" value="option2"> Automóvil
 					<img class="img-size" src="dist/img/auto.jpg" alt="">
+					<b><span id="valorop2">Consumo</span></b>
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input class="check" type="radio" name="optionsRadios" id="minivan" value="option3"> Minivan
+					<input class="check getconsumo" type="radio" name="optionsRadios" id="minivan" value="option3"> Minivan
 					<img class="img-size" src="dist/img/van.jpg" alt="">
+					<b><span id="valorop3">Consumo</span></b>
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input class="check" type="radio" name="optionsRadios" id="camion" value="option4"> Camión
+					<input class="check getconsumo" type="radio" name="optionsRadios" id="camion" value="option4"> Camión
 					<img class="img-size" src="dist/img/camion.jpg" alt="">
+					<b><span id="valorop4">Consumo</span></b>
 				</label>
 			</div>
 			<input type="numeric" name="" placeholder="Numero de Pasajeros">
 			<button id="btn-transport" class="btn pull-right" disabled="disabled">Enviar</button>
+			<input type="hidden" id="distance_value" />
 		</div>
 	</section>
 
@@ -137,6 +144,39 @@
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
+	function rutaKms()
+	  {
+	  //var direccionenJson = "https://maps.googleapis.com/maps/api/directions/json?origin="+document.getElementById('start').value +"&destination="+ document.getElementById('end').value +"&key=AIzaSyAxFLYID9D1LzIKXWvsB6aQLT52r7cpTMw";
+      //console.log(direccionenJson);
+	  var origen = "'" + document.getElementById('start').value + ", Chile'";
+	  var destin = "'" + document.getElementById('end').value + ", Chile'";
+	  var distanceService = new google.maps.DistanceMatrixService();
+    distanceService.getDistanceMatrix({
+        origins: [origen],
+        destinations: [destin],
+        travelMode: google.maps.TravelMode.DRIVING,
+        unitSystem: google.maps.UnitSystem.METRIC,
+        durationInTraffic: true,
+        avoidHighways: false,
+        avoidTolls: false
+    },
+    function (response, status) {
+        if (status !== google.maps.DistanceMatrixStatus.OK) {
+            console.log('Error:', status);
+        } else {
+            //console.log(response);
+			//console.log(response.rows[0].elements[0].distance.text);
+			
+			var valdist = response.rows[0].elements[0].distance.text;
+			var dist = valdist.split(" ");
+			$('#distance_value').val(dist[0]);
+        }
+    });
+	
+	
+	  //window.open(direccionenJson,'_blank');
+			
+	  }
 </script>
 
 </body>
